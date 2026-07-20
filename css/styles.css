@@ -169,6 +169,10 @@ code {
   color: transparent;
 }
 
+/* Balanced heading wraps, no orphan words on running text — no-op in older browsers */
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
 /* ---------- 5. HEADER ---------- */
 .site-header {
   position: fixed; inset-inline: 0; top: 0; z-index: 100;
