@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme is applied before first paint to prevent a flash of the wrong scheme -->
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ali Ibrahim Al Safwan — IT &amp; Network Security</title>
+  <meta name="description" content="Ali Ibrahim Al Safwan — final-semester Networking &amp; Security student. Enterprise IT experience from Worley — Active Directory, ServiceNow, Windows imaging, LAN infrastructure — seeking a full-time IT role.">
+  <meta name="author" content="Ali Ibrahim Al Safwan">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0f1c">
+  <link rel="canonical" href="https://aliibrahimx.github.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ali Ibrahim Al Safwan — IT &amp; Network Security">
+  <meta property="og:description" content="Final-semester Networking &amp; Security student with enterprise IT experience from Worley, seeking a full-time IT role.">
+  <meta property="og:url" content="https://aliibrahimx.github.io/">
+  <meta property="og:site_name" content="Ali Ibrahim Al Safwan">
+  <meta property="og:image" content="https://aliibrahimx.github.io/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ali Ibrahim Al Safwan — IT and Network Security portfolio">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ali Ibrahim Al Safwan — IT &amp; Network Security">
+  <meta name="twitter:description" content="Final-semester Networking &amp; Security student with enterprise IT experience from Worley, seeking a full-time IT role.">
+  <meta name="twitter:image" content="https://aliibrahimx.github.io/assets/og-image.png">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ali Ibrahim Al Safwan",
+    "url": "https://aliibrahimx.github.io/",
+    "jobTitle": "IT & Network Security Student",
+    "email": "mailto:ali.alsafwan96@gmail.com",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Arab Open University" },
+    "knowsAbout": [
+      "Network Security", "Firewalls", "IDS/IPS", "SIEM", "Vulnerability Management",
+      "Cisco Networking", "Linux Administration", "System Administration", "Virtualization",
+      "Artificial Intelligence"
+    ],
+    "sameAs": [
+      "https://github.com/AliIbrahimX",
+      "https://www.linkedin.com/in/ali-al-safwan-1019b418b/"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="Ali Ibrahim Al Safwan — home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+            <path d="M16 3 5 7v8c0 6.6 4.5 11.4 11 14 6.5-2.6 11-7.4 11-14V7L16 3Z" fill="none" stroke="url(#hdr-g)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M16 10.5 11 21h3l2-4.6L18 21h3l-5-10.5Z" fill="currentColor"/>
+            <defs><linearGradient id="hdr-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#818cf8"/></linearGradient></defs>
+          </svg>
+        </span>
+        <span class="logo-text">ali@netsec<span class="logo-cursor" aria-hidden="true">_</span></span>
+      </a>
+
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#credentials" class="nav-link">Credentials</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch color theme" aria-pressed="false">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.6 5.6 4.2 4.2m15.6 15.6-1.4-1.4M5.6 18.4 4.2 19.8M18.4 5.6l1.4-1.4M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home" aria-label="Introduction">
+      <canvas id="network-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow mono reveal">~/home <span class="eyebrow-dot" aria-hidden="true"></span> open to full-time IT opportunities</p>
+          <h1 class="hero-name reveal">Ali Ibrahim<br>Al&nbsp;Safwan</h1>
+          <p class="hero-title reveal">I study how networks fail —<br><span class="gradient-text">so I can defend them.</span></p>
+          <p class="hero-summary reveal">
+            Final-semester Bachelor's student in Networking &amp; Security with real enterprise
+            experience from Worley's IT department — Windows imaging, Active Directory,
+            ServiceNow, and live network infrastructure — built on an earlier career in
+            industrial quality inspection.
+          </p>
+          <div class="hero-cta reveal">
+            <a href="#projects" class="btn btn-primary">View projects</a>
+            <a href="#contact" class="btn btn-outline">Get in touch</a>
+          </div>
+          <div class="hero-socials reveal">
+            <a href="https://github.com/AliIbrahimX" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+              <span class="mono social-label">AliIbrahimX</span>
+            </a>
+            <a href="https://www.linkedin.com/in/ali-al-safwan-1019b418b/" class="social-link" data-linkedin target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5ZM.24 8.25h4.5V23H.24V8.25ZM8.34 8.25h4.31v2.02h.06c.6-1.1 2.06-2.26 4.24-2.26 4.53 0 5.37 2.9 5.37 6.68V23h-4.5v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.66 1.8-2.66 3.65V23h-4.5V8.25Z"/></svg>
+              <span class="mono social-label">Ali Al Safwan</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Signature element: a terminal session that "scans" the owner -->
+        <div class="terminal reveal" role="img" aria-label="Stylized terminal running a profile scan: role IT and network security; status final-semester student; experience Worley IT co-op, February to April 2026; certified Worley cooperative training; interests: network defense and AI.">
+          <div class="terminal-bar" aria-hidden="true">
+            <span class="t-dot t-red"></span><span class="t-dot t-amber"></span><span class="t-dot t-green"></span>
+            <span class="terminal-title mono">ali@netsec: ~</span>
+          </div>
+          <div class="terminal-body mono" id="terminal-body" aria-hidden="true">
+            <!-- Lines are typed by js/main.js; this static fallback shows if JS is off -->
+            <noscript>
+              <p>$ ./profile_scan.sh --target self</p>
+              <p>[ OK ] role ......... IT &amp; Network Security</p>
+              <p>[ OK ] status ....... final-semester student</p>
+              <p>[ OK ] experience ... Worley IT · Feb–Apr 2026</p>
+              <p>[ OK ] certified .... Worley co-op training</p>
+              <p>[ OK ] interests .... network defense · AI</p>
+              <p>$ open ./projects</p>
+            </noscript>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll to the About section">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 4v16m0 0-6-6m6 6 6-6"/></svg>
+      </a>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <p class="section-eyebrow mono reveal">~/about</p>
+        <h2 class="section-title reveal" id="about-heading">Securing systems, not just running them</h2>
+
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>
+              I'm a final-semester Networking &amp; Security student at the Arab Open University
+              in Dammam — but I didn't start in IT. I spent years in industrial quality
+              inspection, running NDT and dimensional inspections on oil-field projects, which
+              taught me process discipline and attention to detail long before I ever touched
+              a switch. That mindset is exactly what security work demands.
+            </p>
+            <p>
+              My cooperative training in Worley's IT department put me inside real enterprise
+              infrastructure: imaging and deploying Windows across company devices, managing
+              accounts and access rights in Active Directory, resolving tickets in ServiceNow,
+              and working hands-on with LAN infrastructure, switch and server rooms, and VoIP.
+              I'm now looking for a full-time IT role where I can contribute from day one.
+            </p>
+            <p>
+              I gravitate to the technical side of defense: traffic analysis in Wireshark,
+              reconnaissance and scanning with Nmap, and the firewall and IDS configuration work
+              that security teams live in every day. Alongside security, I'm genuinely
+              interested in AI — both as a daily working tool and for how machine-learning
+              systems are changing what defenders have to protect.
+            </p>
+          </div>
+
+          <div class="about-stats reveal">
+            <div class="stat-tile">
+              <span class="stat-num mono" data-count="3">0</span>
+              <span class="stat-label">months of industry co-op experience at Worley</span>
+            </div>
+            <div class="stat-tile">
+              <span class="stat-num mono" data-count="2">0</span>
+              <span class="stat-label">projects built — one shipped for a private client</span>
+            </div>
+            <div class="stat-tile">
+              <span class="stat-num mono stat-final">Final<span class="stat-sub">semester</span></span>
+              <span class="stat-label">B.IT Network &amp; Security, Arab Open University</span>
+            </div>
+            <div class="stat-tile">
+              <span class="stat-num mono" data-count="2">0</span>
+              <span class="stat-label">years+ in industrial quality inspection before IT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="section section-alt" id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <p class="section-eyebrow mono reveal">~/skills</p>
+        <h2 class="section-title reveal" id="skills-heading">What I work with</h2>
+        <p class="section-lead reveal">
+          Levels are self-assessed — Learning, Familiar, or Proficient. An honest map of where I am
+          as a graduating student, not a claim of professional mastery.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill-card reveal">
+            <h3 class="skill-card-title">
+              <span class="skill-card-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z"/><path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="m9 11.8 2.2 2.2L15 9.6"/></svg></span>
+              Network Security
+            </h3>
+            <ul class="skill-list">
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Network Security</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Firewalls</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="learning"><span class="skill-name">IDS / IPS</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Learning</span></li>
+              <li class="skill-item" data-level="learning"><span class="skill-name">SIEM</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Learning</span></li>
+              <li class="skill-item" data-level="learning"><span class="skill-name">Risk Assessment</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Learning</span></li>
+              <li class="skill-item" data-level="learning"><span class="skill-name">Vulnerability Management</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Learning</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <h3 class="skill-card-title">
+              <span class="skill-card-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="1.6" d="M4 5h16v10H4z"/><path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M9 19h6M8 15v4M16 15v4"/></svg></span>
+              IT &amp; Systems
+            </h3>
+            <ul class="skill-list">
+              <li class="skill-item" data-level="proficient"><span class="skill-name">Networking</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Proficient</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Active Directory</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">ServiceNow</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">System Administration</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="proficient"><span class="skill-name">Windows</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Proficient</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Linux</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Virtualization</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <h3 class="skill-card-title">
+              <span class="skill-card-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="m8 9-4 3 4 3M16 9l4 3-4 3m-3-9-2 12"/></svg></span>
+              Development
+            </h3>
+            <ul class="skill-list">
+              <li class="skill-item" data-level="proficient"><span class="skill-name">HTML</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Proficient</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">CSS</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">JavaScript</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Java</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="learning"><span class="skill-name">React</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Learning</span></li>
+              <li class="skill-item" data-level="learning"><span class="skill-name">Node.js</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Learning</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Git &amp; GitHub</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <h3 class="skill-card-title">
+              <span class="skill-card-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a3 3 0 1 0-4.2 4.2L3 18v3h3l7.5-7.5a3 3 0 1 0 4.2-4.2Z"/></svg></span>
+              Tools
+            </h3>
+            <ul class="skill-list">
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Wireshark</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Nmap</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="proficient"><span class="skill-name">Cisco Packet Tracer</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Proficient</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">VMware</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+              <li class="skill-item" data-level="learning"><span class="skill-name">Docker</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Learning</span></li>
+              <li class="skill-item" data-level="familiar"><span class="skill-name">Linux Tools</span><span class="skill-meter" aria-hidden="true"><i></i><i></i><i></i></span><span class="skill-tier mono">Familiar</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="skill-legend mono reveal" aria-hidden="true">
+          <span><i class="legend-dot" data-level="learning"></i>Learning</span>
+          <span><i class="legend-dot" data-level="familiar"></i>Familiar</span>
+          <span><i class="legend-dot" data-level="proficient"></i>Proficient</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="section" id="experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <p class="section-eyebrow mono reveal">~/experience</p>
+        <h2 class="section-title reveal" id="experience-heading">Where I've worked</h2>
+
+        <ol class="timeline">
+          <li class="timeline-item reveal">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <p class="timeline-date mono">Feb 2026 – Apr 2026 · Dammam</p>
+              <h3 class="timeline-role">IT Cooperative Training</h3>
+              <p class="timeline-org">Worley — global engineering &amp; professional services</p>
+              <ul class="timeline-list">
+                <li>Deployed and imaged Windows OS across company devices using network and USB methods.</li>
+                <li>Managed user accounts and access rights in Active Directory.</li>
+                <li>Handled IT support tickets end-to-end through ServiceNow.</li>
+                <li>Worked hands-on with LAN infrastructure, switch rooms, server rooms, and VoIP phones.</li>
+                <li>Performed hardware maintenance and secure data destruction on decommissioned devices.</li>
+                <li>Configured network printers via print server; managed engineering software licensing.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag mono">Active Directory</span>
+                <span class="tag mono">ServiceNow</span>
+                <span class="tag mono">Windows Imaging</span>
+                <span class="tag mono">LAN</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="timeline-item reveal">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <p class="timeline-date mono">Feb 2022 – Aug 2022 · Saudi Arabia</p>
+              <h3 class="timeline-role">Quality Inspector — Oil Field Projects</h3>
+              <p class="timeline-org">Gulf Steel Works · Group Five Pipes · Yasref Refinery · Petro Rabigh</p>
+              <ul class="timeline-list">
+                <li>Carried out quality inspection across major oil &amp; gas fabrication and refinery projects.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag mono">Quality Control</span>
+                <span class="tag mono">Oil &amp; Gas</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="timeline-item reveal">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <p class="timeline-date mono">Jan 2019 – Jan 2021 · Saudi Arabia</p>
+              <h3 class="timeline-role">Mechanical Quality Inspector</h3>
+              <p class="timeline-org">TUV Rheinland</p>
+              <ul class="timeline-list">
+                <li>Ran the full inspection lifecycle: NDT (PT &amp; UT), dimensional inspection, calibration, ITP compliance, and COC issuance.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag mono">NDT</span>
+                <span class="tag mono">Calibration</span>
+                <span class="tag mono">ITP</span>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="section section-alt" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <p class="section-eyebrow mono reveal">~/projects</p>
+        <h2 class="section-title reveal" id="projects-heading">What I've built</h2>
+
+        <div class="projects-grid">
+          <!-- Hotel booking system -->
+          <article class="project-card reveal">
+            <div class="project-art" aria-hidden="true">
+              <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+                <defs><linearGradient id="pa1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
+                <g fill="none" stroke="url(#pa1)" stroke-width="1.6">
+                  <rect x="118" y="28" width="84" height="98" rx="6"/>
+                  <path d="M118 50h84M118 72h84M118 94h84"/>
+                  <rect x="132" y="36" width="12" height="8" rx="2"/><rect x="154" y="36" width="12" height="8" rx="2"/><rect x="176" y="36" width="12" height="8" rx="2"/>
+                  <rect x="132" y="58" width="12" height="8" rx="2"/><rect x="154" y="58" width="12" height="8" rx="2"/><rect x="176" y="58" width="12" height="8" rx="2"/>
+                  <rect x="132" y="80" width="12" height="8" rx="2"/><rect x="154" y="80" width="12" height="8" rx="2"/><rect x="176" y="80" width="12" height="8" rx="2"/>
+                  <path d="M150 126v-16h20v16"/>
+                </g>
+                <g class="project-art-side" fill="none" stroke="var(--border-strong)" stroke-width="1.4">
+                  <rect x="34" y="58" width="52" height="34" rx="5"/><path d="M42 70h24M42 79h16"/><circle cx="74" cy="75" r="6"/>
+                  <rect x="234" y="58" width="52" height="34" rx="5"/><path d="M242 70h36M242 79h22"/>
+                </g>
+              </svg>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <h3 class="project-title">Hotel Booking System</h3>
+                <span class="badge badge-live mono">Open source</span>
+              </div>
+              <p class="project-desc">
+                A Java console application modeling a hotel's core operations with clean
+                object-oriented design — <code>Hotel</code>, <code>Room</code>, <code>Guest</code>,
+                and <code>Booking</code> classes handle room booking, check-out, and stay-length
+                calculation with <code>java.time</code>.
+              </p>
+              <ul class="project-points">
+                <li>Separation of concerns across four domain classes</li>
+                <li>Date arithmetic for stay periods via <code>ChronoUnit</code></li>
+                <li>Booking and check-out flows with success validation</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag mono">Java</span><span class="tag mono">OOP</span><span class="tag mono">java.time</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/AliIbrahimX/Hotel" class="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">
+                  View code
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0H9m8 0v8"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Private client website -->
+          <article class="project-card reveal">
+            <div class="project-art" aria-hidden="true">
+              <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+                <defs><linearGradient id="pa2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
+                <g fill="none" stroke="url(#pa2)" stroke-width="1.6">
+                  <rect x="70" y="26" width="180" height="104" rx="8"/>
+                  <path d="M70 46h180"/>
+                  <circle cx="82" cy="36" r="3"/><circle cx="94" cy="36" r="3"/><circle cx="106" cy="36" r="3"/>
+                  <path d="M84 62h70M84 74h96M84 86h54"/>
+                  <rect x="84" y="100" width="44" height="16" rx="4"/>
+                </g>
+                <g fill="none" stroke="url(#pa2)" stroke-width="1.6">
+                  <rect x="196" y="66" width="40" height="34" rx="5"/>
+                  <path d="M204 66v-8a12 12 0 0 1 24 0v8"/>
+                  <circle cx="216" cy="82" r="4"/>
+                </g>
+              </svg>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <h3 class="project-title">Company Website — Private Client</h3>
+                <span class="badge badge-private mono">Private</span>
+              </div>
+              <p class="project-desc">
+                A responsive marketing website designed and built for a private company —
+                structured content, mobile-first layout, and a maintainable stack the client can
+                keep running without a build pipeline. Source and identity remain confidential at
+                the client's request.
+              </p>
+              <ul class="project-points">
+                <li>Responsive, mobile-first layout across devices</li>
+                <li>Hand-written HTML/CSS/JS — no framework overhead</li>
+                <li>Delivered end-to-end: structure, styling, and deployment</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag mono">HTML</span><span class="tag mono">CSS</span><span class="tag mono">JavaScript</span><span class="tag mono">Client work</span>
+              </div>
+              <div class="project-links">
+                <span class="private-note mono">// code under client confidentiality</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Capstone -->
+          <article class="project-card reveal">
+            <div class="project-art" aria-hidden="true">
+              <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+                <defs><linearGradient id="pa3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
+                <g fill="none" stroke="url(#pa3)" stroke-width="1.6">
+                  <circle cx="160" cy="76" r="14"/>
+                  <circle cx="92" cy="44" r="9"/><circle cx="92" cy="110" r="9"/>
+                  <circle cx="228" cy="44" r="9"/><circle cx="228" cy="110" r="9"/>
+                  <path d="M148 68 101 48m47 36-47 20m71-36 47-20m-47 36 47 20"/>
+                </g>
+                <g fill="var(--accent)"><circle cx="160" cy="76" r="3.5"/></g>
+              </svg>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <h3 class="project-title">Final-Year Capstone (TM471)</h3>
+                <span class="badge badge-progress mono">In progress</span>
+              </div>
+              <p class="project-desc">
+                My Arab Open University graduation project, currently underway. The full write-up —
+                problem, approach, and outcomes — will be published here on completion, alongside
+                the Cisco Packet Tracer network builds that support my coursework.
+              </p>
+              <div class="tag-row">
+                <span class="tag mono">Capstone</span><span class="tag mono">Networking</span><span class="tag mono">Packet Tracer</span>
+              </div>
+              <div class="project-links">
+                <span class="private-note mono">// write-up ships with graduation</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- GitHub CTA -->
+          <article class="project-card project-card-ghost reveal">
+            <div class="project-body">
+              <h3 class="project-title">More on GitHub</h3>
+              <p class="project-desc">
+                Smaller exercises and experiments — Java practice, small games, and coursework —
+                live on my GitHub as the portfolio grows.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/AliIbrahimX?tab=repositories" class="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">
+                  Browse repositories
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0H9m8 0v8"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CREDENTIALS ================= -->
+    <section class="section" id="credentials" aria-labelledby="credentials-heading">
+      <div class="container">
+        <p class="section-eyebrow mono reveal">~/credentials</p>
+        <h2 class="section-title reveal" id="credentials-heading">Education &amp; certifications</h2>
+
+        <div class="cred-grid">
+          <div class="cred-card reveal">
+            <div class="cred-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="m12 3 10 5-10 5L2 8l10-5Z"/><path stroke="currentColor" stroke-width="1.6" d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
+            </div>
+            <div class="cred-body">
+              <p class="cred-kicker mono">Education</p>
+              <h3 class="cred-title">Bachelor — Networking &amp; Security</h3>
+              <p class="cred-org">Arab Open University · Dammam · Aug 2022 – Present</p>
+              <p class="cred-desc">Relevant courses: Cisco Networking CCNA-A, Advanced Networking, Applied Network Security, Computer Organization &amp; Architecture, Web, Mobile &amp; Cloud Technologies, and CAS400 Cooperative Training. TM471 capstone in progress.</p>
+              <span class="badge badge-progress mono">Final semester</span>
+            </div>
+          </div>
+
+          <div class="cred-card reveal">
+            <div class="cred-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="m12 3 10 5-10 5L2 8l10-5Z"/><path stroke="currentColor" stroke-width="1.6" d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
+            </div>
+            <div class="cred-body">
+              <p class="cred-kicker mono">Education</p>
+              <h3 class="cred-title">Diploma — Mechanical Inspection</h3>
+              <p class="cred-org">ITQAN College · Ras Tanura · Oct 2016 – Oct 2018</p>
+              <p class="cred-desc">Graduated with a 3.24 GPA. The foundation of a quality-inspection career built on measurement, standards compliance, and disciplined documentation.</p>
+              <span class="badge badge-live mono">Completed</span>
+            </div>
+          </div>
+
+          <div class="cred-card reveal">
+            <div class="cred-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z"/></svg>
+            </div>
+            <div class="cred-body">
+              <p class="cred-kicker mono">Certification</p>
+              <h3 class="cred-title">Cooperative Training Certificate</h3>
+              <p class="cred-org">Worley IT Department · 2026</p>
+              <p class="cred-desc">Completed a full cooperative training term inside Worley's enterprise IT environment — imaging, Active Directory, ServiceNow, and network infrastructure.</p>
+              <span class="badge badge-live mono">Earned</span>
+            </div>
+          </div>
+
+          <div class="cred-card reveal">
+            <div class="cred-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z"/></svg>
+            </div>
+            <div class="cred-body">
+              <p class="cred-kicker mono">Certification</p>
+              <h3 class="cred-title">IELTS — English Proficiency</h3>
+              <p class="cred-org">Band 5.5</p>
+              <p class="cred-desc">Professional working proficiency in English, alongside native Arabic — comfortable in bilingual technical environments.</p>
+              <span class="badge badge-live mono">Earned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section section-alt" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <p class="section-eyebrow mono">~/contact</p>
+          <h2 class="section-title" id="contact-heading">Let's talk</h2>
+          <p class="section-lead contact-lead">
+            Open to co-op, internship, and entry-level opportunities in IT and network security.
+            Email me directly or connect on LinkedIn — my code and full history are on GitHub.
+          </p>
+
+          <div class="contact-cards">
+            <a href="mailto:ali.alsafwan96@gmail.com" class="contact-card">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/><path stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="m4 8 8 6 8-6"/></svg>
+              <span class="contact-card-body">
+                <span class="contact-card-title">Email me</span>
+                <span class="contact-card-sub mono">ali.alsafwan96@gmail.com</span>
+              </span>
+              <svg class="icon icon-sm contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0H9m8 0v8"/></svg>
+            </a>
+
+            <a href="https://www.linkedin.com/in/ali-al-safwan-1019b418b/" data-linkedin class="contact-card" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5ZM.24 8.25h4.5V23H.24V8.25ZM8.34 8.25h4.31v2.02h.06c.6-1.1 2.06-2.26 4.24-2.26 4.53 0 5.37 2.9 5.37 6.68V23h-4.5v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.66 1.8-2.66 3.65V23h-4.5V8.25Z"/></svg>
+              <span class="contact-card-body">
+                <span class="contact-card-title">Connect on LinkedIn</span>
+                <span class="contact-card-sub mono">Ali Al Safwan</span>
+              </span>
+              <svg class="icon icon-sm contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0H9m8 0v8"/></svg>
+            </a>
+
+            <a href="https://github.com/AliIbrahimX" class="contact-card" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+              <span class="contact-card-body">
+                <span class="contact-card-title">Follow on GitHub</span>
+                <span class="contact-card-sub mono">github.com/AliIbrahimX</span>
+              </span>
+              <svg class="icon icon-sm contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0H9m8 0v8"/></svg>
+            </a>
+          </div>
+
+          <p class="contact-status mono"><span class="status-dot" aria-hidden="true"></span>status: open to opportunities</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="mono footer-line">&copy; <span id="footer-year">2026</span> Ali Ibrahim Al Safwan</p>
+      <p class="mono footer-line footer-note">plain HTML / CSS / JS · no trackers · no cookies</p>
+      <div class="footer-socials">
+        <a href="mailto:ali.alsafwan96@gmail.com" aria-label="Email Ali">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/><path stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="m4 8 8 6 8-6"/></svg>
+        </a>
+        <a href="https://github.com/AliIbrahimX" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ali-al-safwan-1019b418b/" data-linkedin target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5ZM.24 8.25h4.5V23H.24V8.25ZM8.34 8.25h4.31v2.02h.06c.6-1.1 2.06-2.26 4.24-2.26 4.53 0 5.37 2.9 5.37 6.68V23h-4.5v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.66 1.8-2.66 3.65V23h-4.5V8.25Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 20V4m0 0-6 6m6-6 6 6"/></svg>
+  </button>
+
+  <script src="js/main.js" defer></script>
+
+</body>
+</html>

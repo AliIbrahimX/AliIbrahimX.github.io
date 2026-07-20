@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — packet lost | Ali Ibrahim Al Safwan</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .nf-wrap { min-height: 100svh; display: grid; place-items: center; padding: 2rem 1.2rem; }
+    .nf-card { max-width: 30rem; width: 100%; }
+    .nf-code {
+      font-size: clamp(4rem, 14vw, 6.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .nf-title { margin-top: 0.6rem; font-size: 1.3rem; font-weight: 700; }
+    .nf-desc { margin-top: 0.6rem; color: var(--text-muted); }
+    .nf-term { margin-top: 1.4rem; }
+    .nf-actions { margin-top: 1.6rem; }
+    .nf-term-body { min-height: 0; }
+  </style>
+</head>
+<body>
+  <main class="nf-wrap">
+    <div class="nf-card">
+      <p class="nf-code mono">404</p>
+      <h1 class="nf-title">Packet lost in transit</h1>
+      <p class="nf-desc">The page you requested doesn't exist at this address — the route may have changed or the link may be mistyped.</p>
+      <div class="terminal nf-term" role="img" aria-label="Terminal output: trace destination, host unreachable, rerouting to home.">
+        <div class="terminal-bar" aria-hidden="true">
+          <span class="t-dot t-red"></span><span class="t-dot t-amber"></span><span class="t-dot t-green"></span>
+          <span class="terminal-title mono">ali@netsec: ~</span>
+        </div>
+        <div class="terminal-body mono nf-term-body" aria-hidden="true">
+          <p class="t-line"><span class="t-prompt">$ </span>trace ./this-page</p>
+          <p class="t-line"><span class="t-warn">[ !! ] </span>destination host unreachable</p>
+          <p class="t-line"><span class="t-ok">[ OK ] </span>rerouting to /home<span class="t-caret"></span></p>
+        </div>
+      </div>
+      <div class="nf-actions">
+        <a href="/" class="btn btn-primary">Back to home</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
