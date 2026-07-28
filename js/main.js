@@ -199,6 +199,7 @@
     { type: 'ok',   text: 'status ....... final-semester student' },
     { type: 'ok',   text: 'experience ... Worley IT · Feb–Apr 2026' },
     { type: 'ok',   text: 'certified .... Worley co-op training' },
+    { type: 'ok',   text: 'building ..... SabbarahAI · AI startup' },
     { type: 'ok',   text: 'interests .... network defense · AI' },
     { type: 'cmd',  text: 'open ./projects', caret: true }
   ];
@@ -306,17 +307,19 @@
     }
 
     function resize() {
-      var rect = canvas.parentElement.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      // The canvas is a fixed, full-viewport background layer
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      var count = Math.max(18, Math.min(46, Math.floor(rect.width / 34)));
+      var count = Math.max(18, Math.min(52, Math.floor(w / 30)));
       nodes = [];
       for (var i = 0; i < count; i++) {
         nodes.push({
-          x: Math.random() * rect.width,
-          y: Math.random() * rect.height,
+          x: Math.random() * w,
+          y: Math.random() * h,
           vx: (Math.random() - 0.5) * 0.22,
           vy: (Math.random() - 0.5) * 0.22,
           r: 1 + Math.random() * 1.4
@@ -351,11 +354,15 @@
             ctx.stroke();
           }
         }
-        ctx.globalAlpha = 0.4;
+        ctx.globalAlpha = 0.45;
         ctx.fillStyle = color;
+        // Larger nodes emit a soft glow — cheap, since only dots get shadows
+        ctx.shadowColor = color;
+        ctx.shadowBlur = n.r > 1.7 ? 9 : 0;
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
       ctx.globalAlpha = 1;
       rafId = requestAnimationFrame(frame);

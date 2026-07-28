@@ -13,12 +13,38 @@ index.html          All markup and content
 404.html            Themed "packet lost" error page
 css/styles.css      Design tokens, components, sections, responsive rules
 js/main.js          Theme, nav, scroll systems, reveal, counters, terminal, canvas
+js/chatbot.js       Ali's Assistant — bilingual (EN/AR) chat assistant
 assets/favicon.svg  Site icon (shield + A mark)
 assets/og-image.png 1200×630 social preview (link previews on LinkedIn/X/WhatsApp)
 robots.txt          Crawl rules
 sitemap.xml         Single-page sitemap
 .nojekyll           Tells GitHub Pages to skip Jekyll processing
 ```
+
+## Ali's Assistant — the chat widget
+
+The launcher in the bottom-right corner opens **Ali's Assistant**, a bilingual
+(English + Arabic) assistant that works with **zero setup** — it ships with a
+built-in intent engine grounded in everything on this page, so it runs free on
+GitHub Pages with no API key and never breaks.
+
+- **Two languages**: auto-detects each message's language and replies in kind
+  (Gulf dialect included — وش / شنو / شلونك all work). The `auto / ع / EN`
+  button in the chat bar pins a language.
+- **Arabic normalization**: strips diacritics/tatweel and unifies أ/إ/آ → ا,
+  ة → ه, ى → ي before matching, so spelling variants still hit.
+- **Grounded knowledge**: ~24 intents covering everything on the page — about,
+  skills, Worley experience, the quality-inspection career, every project
+  (SabbarahAI, Hotel Booking System, client website, TM471), education,
+  certifications, languages, availability, location, and contact.
+- **Context**: "tell me more" / "المزيد" continues the last topic; it remembers
+  your name and keeps the transcript across reloads (`sessionStorage`).
+- **Optional AI upgrade**: paste a Gemini API key at the top of
+  `js/chatbot.js` (setup notes are in the file header) and the assistant
+  answers freeform questions with the model — and silently falls back to the
+  built-in engine if the API errors or rate-limits.
+- **Debuggable**: in the console, `aliAssistant.respond('وش مشاريعه')` tests
+  the brain directly. To teach it new answers, edit the `INTENTS` array.
 
 ## Deploy
 

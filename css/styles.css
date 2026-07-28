@@ -278,7 +278,16 @@ p { text-wrap: pretty; }
   padding: calc(var(--header-h) + 3rem) 0 4.5rem;
   overflow: hidden;
 }
-.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* The constellation is a fixed layer behind the WHOLE page (it lives
+   in the hero markup but escapes it via position: fixed), so every
+   section sits over the same living network backdrop. */
+.hero-canvas {
+  position: fixed; inset: 0; z-index: -1;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.55;
+}
+:root[data-theme="light"] .hero-canvas { opacity: 0.5; }
 .hero-grid-bg {
   position: absolute; inset: 0; pointer-events: none;
   background-image:
@@ -450,34 +459,73 @@ p { text-wrap: pretty; }
   background: color-mix(in srgb, var(--accent) 10%, transparent);
   border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
 }
-.skill-list { margin-top: 1.15rem; display: grid; gap: 0.62rem; }
+.skill-list { margin-top: 1.15rem; display: grid; gap: 0.95rem; }
 .skill-item {
-  display: grid; grid-template-columns: 1fr auto auto;
-  align-items: center; gap: 0.8rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "name tier"
+    "meter meter";
+  align-items: center;
+  column-gap: 0.8rem; row-gap: 0.42rem;
   font-size: 0.92rem;
 }
-.skill-name { color: var(--text); }
-.skill-tier { font-size: 0.7rem; letter-spacing: 0.04em; width: 5.4em; text-align: right; }
-.skill-item[data-level="learning"]   .skill-tier { color: var(--level-learning); }
-.skill-item[data-level="familiar"]   .skill-tier { color: var(--level-familiar); }
-.skill-item[data-level="proficient"] .skill-tier { color: var(--level-proficient); }
-
-/* Signal meter: three segments, lit per tier, staggered on reveal */
-.skill-meter { display: inline-flex; gap: 4px; }
-.skill-meter i {
-  width: 15px; height: 7px; border-radius: 3px;
-  background: var(--border);
-  transform: scaleX(0.4); transform-origin: left;
-  opacity: 0.6;
-  transition: background var(--t-med), transform 380ms var(--ease), opacity 380ms var(--ease);
+.skill-name { grid-area: name; color: var(--text); font-weight: 500; }
+.skill-tier {
+  grid-area: tier;
+  font-size: 0.64rem; letter-spacing: 0.06em; line-height: 1;
+  padding: 0.22rem 0.55rem; border-radius: 999px;
+  border: 1px solid transparent;
 }
-.skill-item.in-view .skill-meter i { transform: scaleX(1); opacity: 1; }
-.skill-item.in-view .skill-meter i:nth-child(2) { transition-delay: 90ms; }
-.skill-item.in-view .skill-meter i:nth-child(3) { transition-delay: 180ms; }
+.skill-item[data-level="learning"] .skill-tier {
+  color: var(--level-learning);
+  border-color: color-mix(in srgb, var(--level-learning) 38%, transparent);
+  background: color-mix(in srgb, var(--level-learning) 8%, transparent);
+}
+.skill-item[data-level="familiar"] .skill-tier {
+  color: var(--level-familiar);
+  border-color: color-mix(in srgb, var(--level-familiar) 38%, transparent);
+  background: color-mix(in srgb, var(--level-familiar) 8%, transparent);
+}
+.skill-item[data-level="proficient"] .skill-tier {
+  color: var(--level-proficient);
+  border-color: color-mix(in srgb, var(--level-proficient) 38%, transparent);
+  background: color-mix(in srgb, var(--level-proficient) 8%, transparent);
+}
 
-.skill-item[data-level="learning"].in-view   .skill-meter i:nth-child(1) { background: var(--level-learning); }
-.skill-item[data-level="familiar"].in-view   .skill-meter i:nth-child(-n+2) { background: var(--level-familiar); }
-.skill-item[data-level="proficient"].in-view .skill-meter i { background: var(--level-proficient); }
+/* Signal bar: a glowing track that fills to the tier on reveal.
+   (The markup's three <i> segments are kept — the first becomes
+   the fill, the other two are unused.) */
+.skill-meter {
+  grid-area: meter;
+  display: block; position: relative;
+  height: 6px; border-radius: 999px;
+  background: color-mix(in srgb, var(--border) 65%, transparent);
+  overflow: hidden;
+}
+.skill-meter i:nth-child(2),
+.skill-meter i:nth-child(3) { display: none; }
+.skill-meter i:first-child {
+  display: block;
+  height: 100%; width: 0;
+  border-radius: 999px;
+  transition: width 760ms var(--ease);
+}
+.skill-item[data-level="learning"] .skill-meter i:first-child {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--level-learning) 45%, transparent), var(--level-learning));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--level-learning) 55%, transparent);
+}
+.skill-item[data-level="familiar"] .skill-meter i:first-child {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--level-familiar) 45%, transparent), var(--level-familiar));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--level-familiar) 55%, transparent);
+}
+.skill-item[data-level="proficient"] .skill-meter i:first-child {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--level-proficient) 45%, transparent), var(--level-proficient));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--level-proficient) 55%, transparent);
+}
+.skill-item[data-level="learning"].in-view   .skill-meter i:first-child { width: 38%; }
+.skill-item[data-level="familiar"].in-view   .skill-meter i:first-child { width: 68%; }
+.skill-item[data-level="proficient"].in-view .skill-meter i:first-child { width: 94%; }
 
 .skill-legend {
   margin-top: 1.6rem;
@@ -485,7 +533,7 @@ p { text-wrap: pretty; }
   font-size: 0.76rem; color: var(--text-muted);
 }
 .skill-legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
-.legend-dot { width: 9px; height: 9px; border-radius: 3px; display: inline-block; }
+.legend-dot { width: 16px; height: 6px; border-radius: 999px; display: inline-block; }
 .legend-dot[data-level="learning"]   { background: var(--level-learning); }
 .legend-dot[data-level="familiar"]   { background: var(--level-familiar); }
 .legend-dot[data-level="proficient"] { background: var(--level-proficient); }
@@ -792,6 +840,217 @@ p { text-wrap: pretty; }
 .pc-typing i:nth-child(2) { animation-delay: 0.15s; }
 .pc-typing i:nth-child(3) { animation-delay: 0.3s; }
 @keyframes pcTyping { 0%, 60%, 100% { opacity: 0.35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-2px); } }
+
+/* Bilingual support — Arabic messages flow right-to-left naturally */
+.pc-msg, .pc-input, .pc-chip { unicode-bidi: plaintext; }
+
+/* ---------- 18. GLOW SYSTEM ----------
+   Accent-tinted light layered onto the existing shadows. All
+   intensities run through four tokens, dialed down in light
+   theme so the site stays professional in both. */
+:root {
+  --glow-soft: color-mix(in srgb, var(--accent) 20%, transparent);
+  --glow-strong: color-mix(in srgb, var(--accent) 36%, transparent);
+  --glow-alt: color-mix(in srgb, var(--accent-2) 20%, transparent);
+  --glow-ambient: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+:root[data-theme="light"] {
+  --glow-soft: color-mix(in srgb, var(--accent) 11%, transparent);
+  --glow-strong: color-mix(in srgb, var(--accent) 20%, transparent);
+  --glow-alt: color-mix(in srgb, var(--accent-2) 10%, transparent);
+  --glow-ambient: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+
+/* Ambient hero light — two soft radial pools behind the content */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero::before {
+  width: 38rem; height: 38rem; top: -12rem; right: -9rem;
+  background: radial-gradient(circle, var(--glow-soft), transparent 70%);
+}
+.hero::after {
+  width: 34rem; height: 34rem; bottom: -14rem; left: -11rem;
+  background: radial-gradient(circle, var(--glow-alt), transparent 70%);
+}
+
+/* Signature text + marks */
+.gradient-text { filter: drop-shadow(0 0 16px var(--glow-soft)); }
+.logo-mark svg { filter: drop-shadow(0 0 7px var(--glow-soft)); }
+.stat-num { text-shadow: 0 0 18px var(--glow-soft); }
+.nav-link.is-active::after { box-shadow: 0 0 8px var(--glow-strong); }
+.scroll-progress { box-shadow: 0 0 10px var(--glow-strong); }
+
+/* Terminal — brighter phosphor */
+.terminal { box-shadow: var(--shadow-lg), 0 0 0 1px var(--border), 0 0 52px var(--glow-ambient); }
+.t-prompt, .t-caret { text-shadow: 0 0 9px var(--glow-strong); }
+.t-caret { box-shadow: 0 0 9px var(--glow-strong); }
+.t-ok { text-shadow: 0 0 9px color-mix(in srgb, var(--ok) 30%, transparent); }
+.eyebrow-dot {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--ok) 25%, transparent),
+    0 0 12px color-mix(in srgb, var(--ok) 60%, transparent);
+}
+.status-dot { box-shadow: 0 0 10px color-mix(in srgb, var(--ok) 60%, transparent); }
+
+/* Buttons + interactive elements */
+.btn-primary { box-shadow: var(--shadow-sm), 0 4px 18px var(--glow-soft); }
+.btn-primary:hover { box-shadow: 0 10px 32px var(--glow-strong); }
+.btn-outline:hover { box-shadow: 0 0 18px var(--glow-ambient); }
+.social-link:hover { box-shadow: 0 0 16px var(--glow-ambient); }
+
+/* Cards — accent-tinted lift on hover */
+.stat-tile:hover,
+.skill-card:hover,
+.cred-card:hover,
+.project-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border-strong));
+  box-shadow: var(--shadow-md), 0 0 30px var(--glow-ambient);
+}
+.contact-card:hover { box-shadow: var(--shadow-md), 0 0 26px var(--glow-soft); }
+.timeline-marker { box-shadow: 0 0 12px var(--glow-strong); }
+
+/* Floating UI */
+.back-to-top:hover { box-shadow: var(--shadow-md), 0 0 20px var(--glow-soft); }
+.pc-launcher { box-shadow: var(--shadow-lg), 0 0 24px var(--glow-soft); }
+.pc-launcher:hover { box-shadow: var(--shadow-lg), 0 0 34px var(--glow-strong); }
+.pc-panel { box-shadow: var(--shadow-lg), 0 0 44px var(--glow-ambient); }
+.pc-send:hover { box-shadow: 0 0 14px var(--glow-strong); }
+.pc-msg-user { box-shadow: 0 0 14px var(--glow-ambient); }
+
+/* ---------- 19. DESIGN 2.0 ----------
+   The refinement pass: full-page aurora atmosphere, gradient
+   card borders, glowing accents, and micro-interactions. All
+   token-driven, so both themes stay coherent. */
+
+/* Aurora — the whole page sits in soft accent light, not just the hero */
+html { background: var(--bg); }
+body { background: transparent; }
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(55rem 40rem at 85% -10%, var(--glow-ambient), transparent 62%),
+    radial-gradient(48rem 36rem at -12% 35%, color-mix(in srgb, var(--accent-2) 7%, transparent), transparent 62%),
+    radial-gradient(60rem 44rem at 65% 115%, color-mix(in srgb, var(--accent) 5%, transparent), transparent 62%);
+}
+.section-alt { background: color-mix(in srgb, var(--bg-elevated) 72%, transparent); }
+.site-footer { background: color-mix(in srgb, var(--bg-elevated) 72%, transparent); }
+
+/* Selection + scrollbar carry the accent */
+::selection { background: color-mix(in srgb, var(--accent) 30%, transparent); }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 6px;
+  border: 3px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Header — glass with a light seam when scrolled */
+.site-header.is-scrolled { box-shadow: var(--shadow-sm), 0 10px 34px var(--glow-ambient); }
+.nav-link:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+
+/* Hero name — lit from above, fading into accent light */
+.hero-name {
+  background: linear-gradient(180deg, var(--text) 52%, color-mix(in srgb, var(--text) 60%, var(--accent)));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 2px 22px var(--glow-ambient));
+}
+
+/* Terminal — faint CRT scanlines */
+.terminal-body {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 2px,
+    color-mix(in srgb, var(--accent) 2.5%, transparent) 2px 3px
+  );
+}
+
+/* Section headers — eyebrow becomes a pill, title gets a glowing bar */
+.section-eyebrow {
+  display: inline-flex; align-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+  padding: 0.3rem 0.75rem; border-radius: 999px;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 56px; height: 3px; border-radius: 3px;
+  margin-top: 0.85rem;
+  background: var(--accent-gradient);
+  box-shadow: 0 0 12px var(--glow-strong);
+}
+
+/* Buttons — shine sweep across the primary action */
+.btn { position: relative; overflow: hidden; }
+.btn-primary::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0; left: -75%; width: 50%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+  transform: skewX(-20deg);
+  transition: left 520ms var(--ease);
+}
+.btn-primary:hover::after { left: 125%; }
+
+/* Badges — soft fills so states read instantly */
+.badge-live { background: color-mix(in srgb, var(--ok) 10%, transparent); }
+.badge-progress { background: color-mix(in srgb, var(--warn) 10%, transparent); }
+
+/* Cards — hover swaps the plain border for a gradient seam */
+.stat-tile:hover,
+.skill-card:hover,
+.timeline-card:hover,
+.cred-card:hover,
+.project-card:hover {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent) 60%, transparent),
+      color-mix(in srgb, var(--accent-2) 60%, transparent)) border-box;
+}
+
+/* Timeline — the spine emits light */
+.timeline::before { box-shadow: 0 0 12px var(--glow-soft); }
+
+/* Project art — same engineering grid as the hero backdrop */
+.project-art {
+  background:
+    radial-gradient(120% 120% at 20% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 55%),
+    linear-gradient(var(--border) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, var(--border) 1px, transparent 1px) 0 0 / 28px 28px,
+    var(--surface-alt);
+}
+
+/* Chat panel — frosted glass over the aurora */
+.pc-panel {
+  background: color-mix(in srgb, var(--bg-elevated) 86%, transparent);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.pc-lang {
+  margin-left: auto;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 0.14rem 0.55rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  min-width: 2.6rem;
+  transition: color var(--t-fast), border-color var(--t-fast);
+}
+.pc-lang:hover { border-color: var(--accent); }
+.pc-lang + .pc-close { margin-left: 0; }
 
 /* ---------- 16. MOTION ---------- */
 @keyframes blink { 50% { opacity: 0; } }

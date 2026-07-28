@@ -143,7 +143,7 @@
         </div>
 
         <!-- Signature element: a terminal session that "scans" the owner -->
-        <div class="terminal reveal" role="img" aria-label="Stylized terminal running a profile scan: role IT and network security; status final-semester student; experience Worley IT co-op, February to April 2026; certified Worley cooperative training; interests: network defense and AI.">
+        <div class="terminal reveal" role="img" aria-label="Stylized terminal running a profile scan: role IT and network security; status final-semester student; experience Worley IT co-op, February to April 2026; certified Worley cooperative training; building SabbarahAI, an AI and automation startup; interests: network defense and AI.">
           <div class="terminal-bar" aria-hidden="true">
             <span class="t-dot t-red"></span><span class="t-dot t-amber"></span><span class="t-dot t-green"></span>
             <span class="terminal-title mono">ali@netsec: ~</span>
@@ -156,6 +156,7 @@
               <p>[ OK ] status ....... final-semester student</p>
               <p>[ OK ] experience ... Worley IT · Feb–Apr 2026</p>
               <p>[ OK ] certified .... Worley co-op training</p>
+              <p>[ OK ] building ..... SabbarahAI · AI startup</p>
               <p>[ OK ] interests .... network defense · AI</p>
               <p>$ open ./projects</p>
             </noscript>
@@ -205,8 +206,8 @@
               <span class="stat-label">months of industry co-op experience at Worley</span>
             </div>
             <div class="stat-tile">
-              <span class="stat-num mono" data-count="2">0</span>
-              <span class="stat-label">projects built — one shipped for a private client</span>
+              <span class="stat-num mono" data-count="3">0</span>
+              <span class="stat-label">projects — one shipped for a client, one AI startup in development</span>
             </div>
             <div class="stat-tile">
               <span class="stat-num mono stat-final">Final<span class="stat-sub">semester</span></span>
@@ -376,6 +377,53 @@
         <h2 class="section-title reveal" id="projects-heading">What I've built</h2>
 
         <div class="projects-grid">
+          <!-- SabbarahAI -->
+          <article class="project-card reveal">
+            <div class="project-art" aria-hidden="true">
+              <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+                <defs><linearGradient id="pa0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
+                <g fill="none" stroke="url(#pa0)" stroke-width="1.6">
+                  <path d="M104 40h84a10 10 0 0 1 10 10v34a10 10 0 0 1-10 10h-48l-14 14v-14h-22a10 10 0 0 1-10-10V50a10 10 0 0 1 10-10Z"/>
+                  <circle cx="128" cy="67" r="3"/><circle cx="146" cy="67" r="3"/><circle cx="164" cy="67" r="3"/>
+                </g>
+                <g fill="none" stroke="url(#pa0)" stroke-width="1.6">
+                  <path d="M236 118V70a10 10 0 0 1 20 0v48"/>
+                  <path d="M236 96h-12a8 8 0 0 1-8-8V78m40 26h12a8 8 0 0 0 8-8V86"/>
+                </g>
+                <g fill="none" stroke="var(--border-strong)" stroke-width="1.4">
+                  <path d="M46 74h30M61 59v30" stroke-linecap="round"/>
+                  <circle cx="61" cy="74" r="20"/>
+                </g>
+              </svg>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <h3 class="project-title">SabbarahAI — AI &amp; Automation Startup</h3>
+                <span class="badge badge-progress mono">In development</span>
+              </div>
+              <p class="project-desc">
+                An AI &amp; automation startup Ali is building in Saudi Arabia — bilingual
+                (Arabic &amp; English) smart assistants, WhatsApp customer-support automation,
+                and business workflow automation for companies. The assistant on this very
+                page, <strong>Ali's Assistant</strong>, is a live demo of what it builds.
+              </p>
+              <ul class="project-points">
+                <li>Bilingual smart assistants — Arabic and English</li>
+                <li>WhatsApp customer-support automation for businesses</li>
+                <li>Workflow automation that removes repetitive busywork</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag mono">AI</span><span class="tag mono">Automation</span><span class="tag mono">Arabic + English</span><span class="tag mono">Chatbots</span>
+              </div>
+              <div class="project-links">
+                <button type="button" class="btn btn-outline btn-sm" data-open-chat>
+                  Try Ali's Assistant
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H8l-4 4V5Z"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
           <!-- Hotel booking system -->
           <article class="project-card reveal">
             <div class="project-art" aria-hidden="true">
@@ -653,16 +701,17 @@
 
   <!-- ================= CHAT ASSISTANT ================= -->
   <div class="pc-root">
-    <button type="button" class="pc-launcher" id="pc-launcher" aria-haspopup="dialog" aria-expanded="false" aria-controls="pc-panel" aria-label="Open chat assistant">
+    <button type="button" class="pc-launcher" id="pc-launcher" aria-haspopup="dialog" aria-expanded="false" aria-controls="pc-panel" aria-label="Open Ali's Assistant — chat in English or Arabic">
       <svg class="icon pc-launcher-icon pc-launcher-icon-open" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H8l-4 4V5Z"/><circle cx="9" cy="10.5" r="1" fill="currentColor"/><circle cx="13" cy="10.5" r="1" fill="currentColor"/><circle cx="17" cy="10.5" r="1" fill="currentColor"/></svg>
       <svg class="icon pc-launcher-icon pc-launcher-icon-close" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
       <span class="pc-launcher-ping" aria-hidden="true"></span>
     </button>
 
-    <div class="pc-panel" id="pc-panel" role="dialog" aria-label="Chat with Ali's site assistant">
+    <div class="pc-panel" id="pc-panel" role="dialog" aria-label="Ali's Assistant — chat about Ali in English or Arabic">
       <div class="pc-bar">
         <span class="t-dot t-red"></span><span class="t-dot t-amber"></span><span class="t-dot t-green"></span>
-        <span class="pc-bar-title mono">ali@netsec: ~/chat</span>
+        <span class="pc-bar-title mono">ali@netsec: ~/assistant</span>
+        <button type="button" class="pc-lang mono" id="pc-lang" aria-label="Change assistant language">auto</button>
         <button type="button" class="pc-close" id="pc-close" aria-label="Close chat">
           <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
         </button>
@@ -674,7 +723,7 @@
 
       <form class="pc-input-row" id="pc-form">
         <span class="pc-prompt mono" aria-hidden="true">$</span>
-        <input type="text" class="pc-input mono" id="pc-input" placeholder="Ask about skills, experience, projects…" autocomplete="off" aria-label="Type a message">
+        <input type="text" class="pc-input mono" id="pc-input" placeholder="Ask about Ali — English or عربي…" autocomplete="off" aria-label="Message Ali's Assistant in English or Arabic">
         <button type="submit" class="pc-send" aria-label="Send message">
           <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m0 0-6-6m6 6-6 6"/></svg>
         </button>
