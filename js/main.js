@@ -192,16 +192,19 @@
   ---------------------------------------------------------- */
   var terminalBody = document.getElementById('terminal-body');
 
+  // Labels are dot-padded to a fixed column so the output aligns, and every
+  // line stays under ~41 characters so nothing wraps in the narrow terminal.
   var SCRIPT = [
-    { type: 'cmd',  text: './profile_scan.sh --target self' },
-    { type: 'dim',  text: 'scanning profile ...' },
-    { type: 'ok',   text: 'role ......... IT & Network Security' },
-    { type: 'ok',   text: 'status ....... final-semester student' },
-    { type: 'ok',   text: 'experience ... Worley IT · Feb–Apr 2026' },
-    { type: 'ok',   text: 'certified .... Worley co-op training' },
-    { type: 'ok',   text: 'building ..... SabbarahAI · AI startup' },
-    { type: 'ok',   text: 'interests .... network defense · AI' },
-    { type: 'cmd',  text: 'open ./projects', caret: true }
+    { type: 'cmd',  text: './profile.sh --scan' },
+    { type: 'dim',  text: 'loading engineer profile ...' },
+    { type: 'ok',   text: 'role ....... AI Engineer' },
+    { type: 'ok',   text: 'builds ..... AI agents · assistants' },
+    { type: 'ok',   text: 'automates .. workflows · APIs' },
+    { type: 'ok',   text: 'secures .... networks · access' },
+    { type: 'ok',   text: 'degree ..... Networking & Security' },
+    { type: 'ok',   text: 'worked ..... Worley IT · 2026' },
+    { type: 'ok',   text: 'ai work .... SABBARAH AI · صبّارة' },
+    { type: 'cmd',  text: 'deploy ./intelligent-systems', caret: true }
   ];
 
   function lineEl(step) {
@@ -381,6 +384,51 @@
     });
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) stop(); else start();
+    });
+  }
+
+  /* ----------------------------------------------------------
+     PROJECT FILTER — narrows the grid by area. AI is the default
+     ordering in the markup, so "All" already leads with AI work.
+     Cards carry a space-separated data-cat, so one project can
+     belong to several areas (AI *and* automation).
+  ---------------------------------------------------------- */
+  var filterChips = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
+  var projectCards = Array.prototype.slice.call(document.querySelectorAll('#projects-grid .project-card'));
+  var filterStatus = document.getElementById('filter-status');
+
+  function applyFilter(key, label) {
+    var shown = 0;
+
+    projectCards.forEach(function (card) {
+      var cats = (card.getAttribute('data-cat') || '').split(/\s+/);
+      var match = key === 'all' || cats.indexOf(key) !== -1;
+      card.classList.toggle('is-filtered', !match);
+      if (match) {
+        shown++;
+        // A card filtered out before it was ever scrolled into view never
+        // fired the reveal observer, so reveal it explicitly on show.
+        card.classList.add('in-view');
+      }
+    });
+
+    if (filterStatus) {
+      filterStatus.textContent = key === 'all'
+        ? 'showing all ' + shown + ' projects'
+        : 'showing ' + shown + ' of ' + projectCards.length + ' projects — ' + label;
+    }
+  }
+
+  if (filterChips.length && projectCards.length) {
+    filterChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        filterChips.forEach(function (other) {
+          var isSelf = other === chip;
+          other.classList.toggle('is-active', isSelf);
+          other.setAttribute('aria-pressed', String(isSelf));
+        });
+        applyFilter(chip.getAttribute('data-filter'), chip.textContent.trim());
+      });
     });
   }
 

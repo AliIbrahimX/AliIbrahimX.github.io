@@ -1052,6 +1052,301 @@ body::before {
 .pc-lang:hover { border-color: var(--accent); }
 .pc-lang + .pc-close { margin-left: 0; }
 
+/* ============================================================
+   20. AI-FIRST COMPONENTS
+   The professional headline, capability hierarchy, career arc,
+   project filtering, and project detail metadata. Everything
+   below reuses the tokens above so both themes stay coherent.
+   ============================================================ */
+
+/* ---------- 20.1 ROLE LINE — the professional headline ---------- */
+.role-line {
+  margin-top: 1rem;
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: 0.15rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-weight: 600; letter-spacing: -0.01em;
+  color: var(--text);
+}
+.role-part { white-space: nowrap; }
+/* "AI Engineer" carries the accent — AI reads first, by design */
+.role-part-lead {
+  color: var(--accent);
+  text-shadow: 0 0 20px var(--glow-strong);
+  font-weight: 700;
+}
+.role-sep { color: var(--border-strong); font-weight: 400; }
+
+/* ---------- 20.2 HERO FOCUS PILLS ---------- */
+.hero-pills {
+  margin-top: 1.4rem;
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.hero-pill {
+  font-size: 0.74rem; letter-spacing: 0.02em;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-alt) 70%, transparent);
+  border-radius: 999px; padding: 0.3rem 0.7rem;
+  transition: color var(--t-fast), border-color var(--t-fast);
+}
+.hero-pill:first-child,
+.hero-pill:nth-child(2) {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 34%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+/* ---------- 20.3 CAREER ARC ---------- */
+.arc-wrap {
+  margin-top: 3.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  padding: 1.6rem clamp(1.1rem, 3vw, 2rem) 1.8rem;
+  box-shadow: var(--shadow-sm);
+}
+.arc-kicker {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.arc {
+  margin-top: 1.4rem;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.1rem;
+  counter-reset: arc;
+}
+.arc-step {
+  position: relative;
+  display: grid; gap: 0.3rem;
+  padding-top: 1.5rem;
+}
+/* The connecting rail runs behind the dots */
+.arc-step::before {
+  content: "";
+  position: absolute; top: 6px; left: 0; right: -1.1rem;
+  height: 2px;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--accent) 45%, transparent),
+    color-mix(in srgb, var(--accent-2) 45%, transparent));
+  opacity: 0.55;
+}
+/* The rail should stop at the final dot, not trail past it */
+.arc-step:last-child::before { display: none; }
+.arc-dot {
+  position: absolute; top: 0; left: 0;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 10px var(--glow-soft);
+}
+.arc-index { font-size: 0.7rem; letter-spacing: 0.08em; color: var(--accent); }
+.arc-label { font-size: 0.95rem; font-weight: 650; letter-spacing: -0.01em; line-height: 1.3; }
+.arc-note { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; }
+/* The current stage is lit and filled */
+.arc-step-now .arc-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent), 0 0 16px var(--glow-strong);
+}
+.arc-step-now .arc-label { color: var(--accent); }
+
+/* The About copy runs longer than the stat tiles, so the tiles ride along
+   with the reader instead of leaving a dead column. */
+@media (min-width: 1021px) {
+  .about-stats { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+}
+
+/* ---------- 20.4 CAPABILITIES ---------- */
+.cap-grid {
+  margin-top: 2.6rem;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+.cap-card {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.6rem 1.7rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.cap-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md), 0 0 30px var(--glow-ambient); }
+
+/* Primary tier — accent-lit, visually dominant */
+.cap-primary {
+  background:
+    radial-gradient(120% 100% at 0% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 58%),
+    var(--surface);
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--border));
+  box-shadow: var(--shadow-md), 0 0 34px var(--glow-ambient);
+}
+/* Secondary tier — quieter, clearly the foundation not the headline */
+.cap-secondary { background: color-mix(in srgb, var(--surface) 62%, transparent); }
+
+.cap-rank {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.cap-primary .cap-rank { color: var(--accent); }
+.cap-rank-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--glow-strong);
+}
+.cap-head {
+  margin-top: 0.9rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.cap-icon {
+  flex: none; display: grid; place-items: center;
+  width: 2.6rem; height: 2.6rem; border-radius: 12px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.cap-primary .cap-icon {
+  width: 3rem; height: 3rem;
+  box-shadow: 0 0 18px var(--glow-soft);
+}
+.cap-secondary .cap-icon { color: var(--text-muted); border-color: var(--border-strong); background: var(--surface-alt); }
+.cap-title { font-size: 1.14rem; font-weight: 700; letter-spacing: -0.012em; line-height: 1.25; }
+.cap-primary .cap-title { font-size: 1.28rem; }
+.cap-desc { margin-top: 0.85rem; color: var(--text-muted); font-size: 0.94rem; }
+.cap-list { margin-top: 1.05rem; display: grid; gap: 0.45rem; font-size: 0.9rem; color: var(--text-muted); }
+.cap-list li { padding-left: 1.35rem; position: relative; }
+.cap-list li::before {
+  content: "";
+  position: absolute; left: 0; top: 0.58em;
+  width: 7px; height: 7px; border-radius: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--glow-soft);
+}
+.cap-secondary .cap-list li::before { background: var(--border-strong); box-shadow: none; }
+
+/* ---------- 20.5 STACK — featured AI card ---------- */
+.badge-focus {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  font-weight: 700;
+}
+.skill-featured-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 0.8rem; flex-wrap: wrap;
+}
+/* AI spans the full grid row: it is not a peer of the other cards */
+.skill-card-featured {
+  grid-column: 1 / -1;
+  background:
+    radial-gradient(110% 100% at 0% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 55%),
+    var(--surface);
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--border));
+  box-shadow: var(--shadow-md), 0 0 34px var(--glow-ambient);
+}
+.skill-card-featured .skill-card-title { font-size: 1.2rem; }
+.skill-list-2col { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+
+/* ---------- 20.6 EXPERIENCE — current role ---------- */
+.timeline-card-current {
+  background:
+    radial-gradient(110% 100% at 0% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 58%),
+    var(--surface);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+}
+.timeline-marker-now {
+  background: var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 18%, transparent), 0 0 16px var(--glow-strong);
+}
+.timeline-now {
+  margin-left: 0.55rem;
+  font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent-gradient);
+  border-radius: 999px; padding: 0.14rem 0.5rem;
+}
+.timeline-note {
+  margin-top: 2.2rem; max-width: 46rem;
+  color: var(--text-muted); font-size: 0.94rem;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  padding-left: 1.1rem;
+}
+
+/* ---------- 20.7 PROJECT FILTER ---------- */
+.filter-bar {
+  margin-top: 2rem;
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+}
+.filter-chip {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border-strong);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border-radius: 999px; padding: 0.42rem 0.9rem;
+  transition: color var(--t-fast), border-color var(--t-fast),
+              background var(--t-fast), box-shadow var(--t-fast);
+}
+.filter-chip:hover { color: var(--text); border-color: var(--accent); }
+.filter-chip.is-active {
+  color: var(--accent-ink);
+  background: var(--accent-gradient);
+  border-color: transparent;
+  box-shadow: 0 0 18px var(--glow-soft);
+}
+.filter-status { margin-top: 0.8rem; font-size: 0.76rem; color: var(--text-muted); min-height: 1.2em; }
+/* Filtered-out cards leave the layout entirely so the grid reflows */
+.project-card.is-filtered { display: none; }
+
+/* ---------- 20.8 PROJECT DETAIL + FEATURED ---------- */
+.project-meta { display: grid; gap: 0.55rem; font-size: 0.88rem; }
+.project-meta > div {
+  display: grid; grid-template-columns: 5.9rem minmax(0, 1fr);
+  gap: 0.7rem; align-items: baseline;
+}
+.project-meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 0.15rem;
+}
+.project-meta dd { margin: 0; color: var(--text-muted); }
+
+/* The flagship AI project spans the grid and lays out side-by-side */
+.project-card-featured {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--border));
+  box-shadow: var(--shadow-md), 0 0 34px var(--glow-ambient);
+}
+.project-card-featured .project-art {
+  flex: 0 0 38%;
+  border-bottom: none;
+  border-right: 1px solid var(--border);
+  display: grid; place-items: center;
+}
+/* Keep the illustration's own aspect ratio — a tall column plus
+   preserveAspectRatio="slice" would crop the artwork to its centre. */
+.project-card-featured .project-art svg { height: auto; }
+.project-card-featured .project-body { flex: 1; padding: 1.7rem 1.8rem 1.8rem; }
+.project-card-featured .project-title { font-size: 1.3rem; }
+
+/* ---------- 20.9 CREDENTIALS — the degree leads ---------- */
+.cred-card-primary {
+  grid-column: 1 / -1;
+  background:
+    radial-gradient(90% 100% at 0% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 55%),
+    var(--surface);
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--border));
+  box-shadow: var(--shadow-md), 0 0 34px var(--glow-ambient);
+}
+.cred-card-primary .cred-icon { width: 3.4rem; height: 3.4rem; box-shadow: 0 0 18px var(--glow-soft); }
+.cred-card-primary .cred-title { font-size: 1.3rem; line-height: 1.3; }
+.cred-tags { margin-top: 0.9rem; }
+
+/* ---------- 20.10 CONTACT — four routes, even 2x2 ---------- */
+.contact-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
 /* ---------- 16. MOTION ---------- */
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.8); opacity: 0.65; } }
@@ -1127,4 +1422,182 @@ body::before {
     right: 0.7rem; left: 0.7rem; bottom: 5rem;
     width: auto; height: min(28rem, calc(100vh - 7rem));
   }
+}
+
+/* ============================================================
+   21. RESPONSIVE — AI-FIRST COMPONENTS
+   Ordered widest → narrowest so each step overrides the last.
+   ============================================================ */
+
+/* Seven nav items need tighter tracking before the mobile menu kicks in */
+@media (max-width: 1100px) {
+  .nav-link { padding-inline: 0.55rem; font-size: 0.87rem; }
+}
+
+@media (max-width: 1020px) {
+  .arc { gap: 0.9rem; }
+  .arc-label { font-size: 0.88rem; }
+  .arc-note { font-size: 0.75rem; }
+  .arc-step::before { right: -0.9rem; }
+  /* The hero terminal is centred once the columns stack */
+  .terminal { margin-inline: auto; }
+}
+
+@media (max-width: 860px) {
+  .cap-grid { grid-template-columns: 1fr; }
+  .cap-primary .cap-title { font-size: 1.2rem; }
+
+  /* Featured cards stop spanning once the grids are single-column */
+  .skill-list-2col { grid-template-columns: 1fr; }
+  .project-card-featured { flex-direction: column; }
+  .project-card-featured .project-art {
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .project-card-featured .project-art svg { height: 150px; min-height: 0; }
+  .project-card-featured .project-body { padding: 1.4rem 1.5rem 1.5rem; }
+  .project-card-featured .project-title { font-size: 1.18rem; }
+  .cred-card-primary .cred-title { font-size: 1.18rem; }
+
+  /* Career arc becomes a vertical progression with a left rail */
+  .arc { grid-template-columns: 1fr; gap: 0; }
+  .arc-step { padding-top: 0; padding-left: 2rem; padding-bottom: 1.35rem; }
+  .arc-step:last-child { padding-bottom: 0; }
+  .arc-step::before {
+    top: 16px; bottom: 0; left: 6px; right: auto;
+    width: 2px; height: auto;
+    background: linear-gradient(180deg,
+      color-mix(in srgb, var(--accent) 45%, transparent),
+      color-mix(in srgb, var(--accent-2) 45%, transparent));
+  }
+  .arc-step:last-child::before { display: none; }
+  .arc-dot { top: 2px; left: 0; }
+  .arc-label { font-size: 0.95rem; }
+  .arc-note { font-size: 0.8rem; }
+}
+
+@media (max-width: 560px) {
+  .role-line { gap: 0.1rem 0.5rem; font-size: 0.95rem; }
+  .hero-pills { gap: 0.35rem; }
+  .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
+
+  /* One long row of chips beats three stacked rows on a phone */
+  .filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 0.35rem;
+    margin-inline: -1.1rem;
+    padding-inline: 1.1rem;
+    scroll-snap-type: x proximity;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-chip { flex: none; scroll-snap-align: start; }
+
+  /* Stacked label/value reads better than a narrow two-column split */
+  .project-meta > div { grid-template-columns: 1fr; gap: 0.15rem; }
+  .project-meta dt { padding-top: 0; }
+
+  .arc-wrap { padding-inline: 1.1rem; }
+  .timeline-note { padding-left: 0.9rem; }
+}
+
+@media (max-width: 460px) {
+  /* Credential cards stack their icon above the text at the smallest sizes */
+  .cred-card { flex-direction: column; gap: 0.9rem; padding: 1.35rem; }
+  .about-stats { grid-template-columns: 1fr; }
+  .stat-num { font-size: 1.7rem; }
+}
+
+/* ============================================================
+   22. HERO — ONE COMPLETE VIEWPORT
+   The hero must read as a finished first screen: all of its
+   content visible, the scroll cue sitting at the fold, and the
+   next section starting cleanly below it rather than peeking in.
+   min-height keeps it a full viewport; the tiers below shrink
+   the vertical rhythm so the content still fits on short and
+   narrow screens instead of being cut off.
+   ============================================================ */
+.hero {
+  /* svh tracks the *stable* viewport, so mobile browser chrome
+     collapsing does not leave the hero taller than the screen. */
+  min-height: 100svh;
+  padding-bottom: 3.5rem;
+}
+
+/* The section boundary should dissolve, not cut. The grid backdrop
+   fades out before the hero ends so the eye carries into About. */
+.hero-grid-bg {
+  -webkit-mask-image:
+    radial-gradient(ellipse 75% 65% at 60% 40%, black 30%, transparent 75%),
+    linear-gradient(to bottom, black 62%, transparent 96%);
+  mask-image:
+    radial-gradient(ellipse 75% 65% at 60% 40%, black 30%, transparent 75%),
+    linear-gradient(to bottom, black 62%, transparent 96%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Short viewports (most laptops are 768px or 720px tall) */
+@media (max-height: 820px) {
+  .hero { padding-top: calc(var(--header-h) + 1.5rem); padding-bottom: 2.5rem; }
+  .hero-name { margin-top: 0.7rem; }
+  .role-line { margin-top: 0.7rem; }
+  .hero-title { margin-top: 0.65rem; }
+  .hero-summary { margin-top: 0.8rem; }
+  .hero-pills { margin-top: 1rem; }
+  .hero-cta { margin-top: 1.2rem; }
+  .hero-socials { margin-top: 1.2rem; }
+}
+
+/* Very short viewports — trim the display type as well */
+@media (max-height: 750px) {
+  .hero-name { font-size: clamp(2.3rem, 4.4vw, 3.4rem); }
+  .hero-title { font-size: clamp(1.15rem, 2vw, 1.45rem); }
+  .hero-summary { margin-top: 0.7rem; }
+  .hero-pills { margin-top: 0.8rem; }
+  .hero-cta { margin-top: 1rem; }
+  .hero-socials { margin-top: 1rem; }
+  .scroll-cue { display: none; }
+}
+
+/* The terminal is a decorative restatement of the copy (it is
+   aria-hidden, and its facts appear in the role line, pills, and
+   summary). Once it has to stack under the copy it pushes the hero
+   past one screen, so it steps aside on narrow or short viewports. */
+@media (max-width: 819px), (max-height: 700px) {
+  .hero .terminal { display: none; }
+}
+
+@media (max-width: 560px) {
+  .hero { padding-top: calc(var(--header-h) + 1.25rem); padding-bottom: 2rem; }
+  .eyebrow { font-size: 0.76rem; padding: 0.3rem 0.7rem; }
+  .hero-name { margin-top: 0.75rem; }
+  .role-line { margin-top: 0.75rem; }
+  .hero-title { margin-top: 0.65rem; }
+  .hero-summary { margin-top: 0.75rem; }
+  .hero-pills { margin-top: 0.85rem; gap: 0.3rem; }
+  .hero-pill { font-size: 0.7rem; padding: 0.26rem 0.6rem; }
+  .hero-cta { margin-top: 1rem; gap: 0.6rem; }
+  .hero-socials { margin-top: 1rem; gap: 0.45rem; }
+  /* Icons alone keep the three links on a single row */
+  .hero-socials .social-label { display: none; }
+  .hero-socials .social-link { padding: 0.55rem 0.8rem; }
+}
+
+/* A phone showing browser toolbars gives roughly 734px of svh, so the
+   type tightens once more to keep the whole hero on one screen. */
+@media (max-width: 560px) and (max-height: 800px) {
+  .hero-name { font-size: clamp(2.05rem, 8.6vw, 2.5rem); }
+  .role-line { font-size: 0.9rem; }
+  .hero-title { font-size: 1.1rem; }
+  .hero-summary { font-size: 0.97rem; line-height: 1.55; }
+}
+
+/* Smallest screens: drop the two most redundant elements. The role line
+   already states the title, and the Contact section repeats availability. */
+@media (max-width: 560px) and (max-height: 690px) {
+  .hero .eyebrow { display: none; }
+  .hero-pills { display: none; }
 }
