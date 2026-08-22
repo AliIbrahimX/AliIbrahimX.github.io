@@ -33,7 +33,7 @@ That hierarchy is deliberate and is expressed structurally, not just in copy:
 **The main professional title and the company role are two different things.**
 The headline `AI Engineer | Automation | Cybersecurity` is the professional
 identity and must never be replaced by a company role. Separately, his role at
-**SABBARAH AI** is *Co-Founder & AI Product and Growth Lead*, covering both the
+**SABBARAH AI** is *Founder & AI Product and Growth Lead*, covering both the
 AI/product side (agents, bilingual assistants, automation, integrations) and the
 growth/business side (positioning, marketing content, customer acquisition).
 Keep that distinction when editing `index.html`, the `INTENTS` array, and

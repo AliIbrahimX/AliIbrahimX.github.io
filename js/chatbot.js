@@ -158,8 +158,8 @@
       keywords: ['experience', 'worley', 'job', 'coop', 'co op', 'cooperative', 'training', 'internship', 'worked', 'work', 'career', 'employment', 'it department', 'enterprise',
         'خبره', 'خبرات', 'خبرته', 'خبراته', 'وظيفه', 'تدريب', 'تدريب تعاوني', 'وين اشتغل', 'اشتغل', 'عمل', 'وورلي'],
       responses: {
-        en: ['Ali\'s experience, most recent first:\n🤖 Co-Founder & AI Product and Growth Lead at SABBARAH AI (2026 – present, Saudi Arabia): co-founded the company and leads its AI product direction — building AI agents and bilingual AI assistants, automating customer support and sales operations, designing intelligent workflows and API integrations — while also leading growth and go-to-market: positioning, marketing content, and customer acquisition.\n💼 IT Cooperative Training at Worley (Feb–Apr 2026, Dammam): Windows imaging across company devices, Active Directory accounts and access rights, ServiceNow tickets end-to-end, LAN infrastructure, switch and server rooms, VoIP, hardware maintenance, secure data destruction, network printers, and engineering software licensing.\nBefore IT he built a career in industrial quality inspection — ask me about that too.'],
-        ar: ['خبرات علي، من الأحدث:\n🤖 شريك مؤسس وقائد منتج الذكاء الاصطناعي والنمو في SABBARAH AI (2026 – حتى الآن، السعودية): شارك في تأسيس الشركة ويقود اتجاه منتج الذكاء الاصطناعي — يبني وكلاء ذكاء اصطناعي ومساعدين ثنائيي اللغة، ويؤتمت عمليات خدمة العملاء والمبيعات، ويصمّم سير عمل ذكيًا وتكاملات API — ويقود كذلك النمو والتسويق: التموضع والمحتوى التسويقي وجذب العملاء.\n💼 تدريب تعاوني في تقنية المعلومات بشركة Worley (فبراير–أبريل 2026، الدمام): نسخ أنظمة Windows على أجهزة الشركة، وإدارة الحسابات والصلاحيات في Active Directory، ومعالجة تذاكر ServiceNow، وبنية الشبكة المحلية وغرف السويتشات والخوادم وهواتف VoIP، وصيانة الأجهزة، والإتلاف الآمن للبيانات، والطابعات الشبكية، وتراخيص البرامج الهندسية.\nوقبل التقنية بنى مسيرة في فحص الجودة الصناعي — اسألني عنها أيضًا.']
+        en: ['Ali\'s experience, most recent first:\n🤖 Founder & AI Product and Growth Lead at SABBARAH AI (2026 – present, Saudi Arabia): founded the company and leads its AI product direction — building AI agents and bilingual AI assistants, automating customer support and sales operations, designing intelligent workflows and API integrations — while also leading growth and go-to-market: positioning, marketing content, and customer acquisition.\n💼 IT Cooperative Training at Worley (Feb–Apr 2026, Dammam): Windows imaging across company devices, Active Directory accounts and access rights, ServiceNow tickets end-to-end, LAN infrastructure, switch and server rooms, VoIP, hardware maintenance, secure data destruction, network printers, and engineering software licensing.\nBefore IT he built a career in industrial quality inspection — ask me about that too.'],
+        ar: ['خبرات علي، من الأحدث:\n🤖 مؤسس وقائد منتج الذكاء الاصطناعي والنمو في SABBARAH AI (2026 – حتى الآن، السعودية): أسّس الشركة ويقود اتجاه منتج الذكاء الاصطناعي — يبني وكلاء ذكاء اصطناعي ومساعدين ثنائيي اللغة، ويؤتمت عمليات خدمة العملاء والمبيعات، ويصمّم سير عمل ذكيًا وتكاملات API — ويقود كذلك النمو والتسويق: التموضع والمحتوى التسويقي وجذب العملاء.\n💼 تدريب تعاوني في تقنية المعلومات بشركة Worley (فبراير–أبريل 2026، الدمام): نسخ أنظمة Windows على أجهزة الشركة، وإدارة الحسابات والصلاحيات في Active Directory، ومعالجة تذاكر ServiceNow، وبنية الشبكة المحلية وغرف السويتشات والخوادم وهواتف VoIP، وصيانة الأجهزة، والإتلاف الآمن للبيانات، والطابعات الشبكية، وتراخيص البرامج الهندسية.\nوقبل التقنية بنى مسيرة في فحص الجودة الصناعي — اسألني عنها أيضًا.']
       },
       more: {
         en: 'The Worley term is what makes the AI work credible: he has worked inside a real enterprise IT environment, so he knows what identity, access, and network infrastructure actually look like before automating anything on top of them. Before IT, Ali worked in industrial quality inspection — ask me about his quality-inspection career for that side of his story.',
@@ -182,8 +182,8 @@
         'مسماه الوظيفي', 'مسماه', 'وظيفته', 'منصبه', 'دوره', 'وش شغله', 'مؤسس', 'شريك مؤسس', 'صاحب الشركه', 'وش يشتغل'],
       weight: 1.45,
       responses: {
-        en: ['Ali\'s professional title is AI Engineer | Automation | Cybersecurity. 🤖 That\'s how he presents his work: AI engineering and automation are what he does, with cybersecurity and networking as the technical foundation underneath.\nAt SABBARAH AI specifically, his role is Co-Founder & AI Product and Growth Lead — he co-founded the company and leads both sides of it: the AI product (agents, bilingual assistants, automation, integrations) and growth (positioning, marketing, and customer acquisition).'],
-        ar: ['المسمى المهني لعلي هو: مهندس ذكاء اصطناعي | أتمتة | أمن سيبراني. 🤖 وهكذا يقدّم عمله: هندسة الذكاء الاصطناعي والأتمتة هي ما يعمل به، والأمن السيبراني والشبكات هما الأساس التقني تحته.\nوفي SABBARAH AI تحديدًا، دوره هو شريك مؤسس وقائد منتج الذكاء الاصطناعي والنمو — شارك في تأسيس الشركة ويقود جانبيها: منتج الذكاء الاصطناعي (الوكلاء والمساعدون ثنائيو اللغة والأتمتة والتكاملات) والنمو (التسويق والتموضع وجذب العملاء).']
+        en: ['Ali\'s professional title is AI Engineer | Automation | Cybersecurity. 🤖 That\'s how he presents his work: AI engineering and automation are what he does, with cybersecurity and networking as the technical foundation underneath.\nAt SABBARAH AI specifically, his role is Founder & AI Product and Growth Lead — he founded the company and leads both sides of it: the AI product (agents, bilingual assistants, automation, integrations) and growth (positioning, marketing, and customer acquisition).'],
+        ar: ['المسمى المهني لعلي هو: مهندس ذكاء اصطناعي | أتمتة | أمن سيبراني. 🤖 وهكذا يقدّم عمله: هندسة الذكاء الاصطناعي والأتمتة هي ما يعمل به، والأمن السيبراني والشبكات هما الأساس التقني تحته.\nوفي SABBARAH AI تحديدًا، دوره هو مؤسس وقائد منتج الذكاء الاصطناعي والنمو — أسّس الشركة ويقود جانبيها: منتج الذكاء الاصطناعي (الوكلاء والمساعدون ثنائيو اللغة والأتمتة والتكاملات) والنمو (التسويق والتموضع وجذب العملاء).']
       },
       chips: true
     },
@@ -240,8 +240,8 @@
         'صباره', 'صبارا', 'شركته', 'شركه الذكاء', 'ستارت اب'],
       weight: 1.5,
       responses: {
-        en: ['SABBARAH AI (صبّارة) 🌵 builds AI solutions and business automation for organizations in Saudi Arabia — AI agents, intelligent workflows, and AI-powered business systems. Ali is its Co-Founder & AI Product and Growth Lead: he leads the AI product side (the agents, the bilingual assistants, the automation behind customer operations, and the integrations into existing business tools) and the growth side (positioning, marketing content, and customer acquisition). More at https://sabbarahai.com — and I\'m a live example of the kind of assistant that work produces. 😉'],
-        ar: ['صبّارة SABBARAH AI 🌵 تبني حلول ذكاء اصطناعي وأتمتة أعمال للمؤسسات في السعودية — وكلاء ذكاء اصطناعي، وسير عمل ذكي، وأنظمة أعمال مدعومة بالذكاء الاصطناعي. وعلي شريك مؤسس وقائد منتج الذكاء الاصطناعي والنمو فيها: يقود جانب المنتج (الوكلاء والمساعدون ثنائيو اللغة والأتمتة خلف عمليات العملاء والتكاملات مع أدوات العمل القائمة) وجانب النمو (التموضع والمحتوى التسويقي وجذب العملاء). التفاصيل على https://sabbarahai.com — وأنا مثال حي على نوع المساعدين الناتج عن هذا العمل. 😉']
+        en: ['SABBARAH AI (صبّارة) 🌵 builds AI solutions and business automation for organizations in Saudi Arabia — AI agents, intelligent workflows, and AI-powered business systems. Ali is its Founder & AI Product and Growth Lead: he leads the AI product side (the agents, the bilingual assistants, the automation behind customer operations, and the integrations into existing business tools) and the growth side (positioning, marketing content, and customer acquisition). More at https://sabbarahai.com — and I\'m a live example of the kind of assistant that work produces. 😉'],
+        ar: ['صبّارة SABBARAH AI 🌵 تبني حلول ذكاء اصطناعي وأتمتة أعمال للمؤسسات في السعودية — وكلاء ذكاء اصطناعي، وسير عمل ذكي، وأنظمة أعمال مدعومة بالذكاء الاصطناعي. وعلي مؤسس وقائد منتج الذكاء الاصطناعي والنمو فيها: يقود جانب المنتج (الوكلاء والمساعدون ثنائيو اللغة والأتمتة خلف عمليات العملاء والتكاملات مع أدوات العمل القائمة) وجانب النمو (التموضع والمحتوى التسويقي وجذب العملاء). التفاصيل على https://sabbarahai.com — وأنا مثال حي على نوع المساعدين الناتج عن هذا العمل. 😉']
       }
     },
     {
@@ -653,7 +653,7 @@
     'so lead with the AI and automation work. Never call him "just a student" — he is an AI Engineer who ' +
     'also happens to be finishing a Networking & Security degree. His tagline: "I build AI agents and ' +
     'automated systems — engineered on a security foundation." IMPORTANT DISTINCTION: his ROLE AT ' +
-    'SABBARAH AI is "Co-Founder & AI Product and Growth Lead" — state that when asked about SABBARAH AI ' +
+    'SABBARAH AI is "Founder & AI Product and Growth Lead" — state that when asked about SABBARAH AI ' +
     'or about his role there. Do not promote that company role into his overall professional title, and ' +
     'do not describe him as a founder of any other company.',
     '=== ABOUT === Ali Ibrahim Al Safwan — AI Engineer working across AI, automation, and cybersecurity. ' +
@@ -682,8 +682,8 @@
     'Linux, Virtualization/VMware, IT Asset Management. Development — Proficient: HTML; Familiar: CSS, ' +
     'JavaScript, Java, Git & GitHub; Learning: Node.js, React. Tools — Proficient: Cisco Packet Tracer; ' +
     'Familiar: Wireshark, Nmap, Linux Tools; Learning: Docker.',
-    '=== EXPERIENCE === 1) Co-Founder & AI Product and Growth Lead, SABBARAH AI, 2026 – present, Saudi ' +
-    'Arabia. Co-founded the company and leads its AI product direction — what gets built and why. AI and ' +
+    '=== EXPERIENCE === 1) Founder & AI Product and Growth Lead, SABBARAH AI, 2026 – present, Saudi ' +
+    'Arabia. Founded the company and leads its AI product direction — what gets built and why. AI and ' +
     'product side: builds AI agents and bilingual (Arabic/English) AI assistants for business use; ' +
     'develops AI-powered systems and automates customer support and sales operations; designs intelligent ' +
     'workflows and API integrations between business tools; takes AI ideas from prototype to working ' +
@@ -697,7 +697,7 @@
     'Rheinland, Jan 2019 – Jan 2021: NDT (PT & UT), dimensional inspection, calibration, ITP, COC.',
     '=== PROJECTS (AI first) === 1) SABBARAH AI (صبّارة) — builds AI solutions and business automation for ' +
     'organizations in Saudi Arabia: AI agents, intelligent workflows, AI-powered business systems. Ali is ' +
-    'its Co-Founder & AI Product and Growth Lead. https://sabbarahai.com 2) Ali\'s Assistant — this ' +
+    'its Founder & AI Product and Growth Lead. https://sabbarahai.com 2) Ali\'s Assistant — this ' +
     'assistant. Ali ' +
     'designed and built it end-to-end: bilingual Arabic/English, hybrid architecture (a grounded local ' +
     'intent engine that always works, plus an optional LLM path), Arabic text normalization, weighted ' +
